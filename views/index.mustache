@@ -1,39 +1,42 @@
 <!DOCTYPE html>
 <html>
-   <head>
-      <meta charset="utf-8">
-      <title>To Do List</title>
-      <link rel="stylesheet" href="../public/styles.css">
-   </head>
-   <body>
+
+<head>
+    <meta charset="utf-8">
+    <title>To Do List</title>
+    <link rel="stylesheet" href="../public/styles.css">
+</head>
+
+<body>
+    <div class="main">
+        <h1>To Do List</h1>
         <form method="POST" action="/">
             <div class='input-area'>
-                <input type="text" name="todo" placeholder="To Do: "/><br>
+                <input type="text" name="todo" placeholder="To Do: " />
                 <button type="submit">Submit</button>
             </div>
         </form>
         <div class='todo-list'>
-             <ul>
-                {{#todos}}
-                {{^completed}}
+            <ul>
+                {{#todos}} {{^completed}}
                 <form method="POST" action="/{{id}}">
-                <li>{{task}} <button type="submit" class="mark-complete">Mark Complete</button></li>
+                    <li><button type="submit" class="mark-complete">Mark Complete</button>{{task}} </li>
                 </form>
-                {{/completed}}
-                {{/todos}}
+                {{/completed}} {{/todos}}
             </ul>
         </div>
         <div class='completed-tasks'>
             <h2>Completed Tasks</h2>
-             <ul class="completed">
-                 {{#todos}}
-                 {{#completed}}
-                 <li>{{task}}</li> 
-                 {{/completed}}
-                 {{/todos}}
+            <ul>
+                {{#todos}} {{#completed}}
+                <li>{{task}}</li>
+                {{/completed}} {{/todos}}
             </ul>
         </div>
-      <script type="text/javascript" src='../public/main.js'>
-      </script>
-   </body>
+        <script type="text/javascript" src='../public/main.js'>
+
+        </script>
+    </div>
+</body>
+
 </html>
