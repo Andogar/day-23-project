@@ -15,14 +15,21 @@
         <div class='todo-list'>
              <ul>
                 {{#todos}}
+                {{^completed}}
+                <form method="POST" action="/{{id}}">
                 <li>{{task}} <button type="submit" class="mark-complete">Mark Complete</button></li>
+                </form>
+                {{/completed}}
                 {{/todos}}
             </ul>
         </div>
         <div class='completed-tasks'>
             <h2>Completed Tasks</h2>
              <ul class="completed">
-                 {{^todos}}
+                 {{#todos}}
+                 {{#completed}}
+                 <li>{{task}}</li> 
+                 {{/completed}}
                  {{/todos}}
             </ul>
         </div>

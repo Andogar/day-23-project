@@ -12,7 +12,8 @@ application.use(bodyParser.urlencoded());
 
 application.use('/public', express.static('./public'));
 
-const todos = [ ]
+const todos = [ ];
+var id = 1;
 
 
 application.get("/", function (request, response) {
@@ -20,20 +21,20 @@ application.get("/", function (request, response) {
 });
 
 application.post("/", function (request, response) {
-  var listItem = { task: request.body.todo, completed: false }
+  var listItem = { task: request.body.todo, completed: false, id: id++ }
     todos.push(listItem)
     
     response.redirect('/');
-})
+});
 
-application.put('/', (request, response) => {
+application.post('/:id', (request, response) => {
   todos.find(function(todo) {
-    if (todo.task == request.body.task) {
+    if (todo.id == request.params.id) {
        todo.completed = true;
        return true;
     }
   })
-  response.render('/', todos)
-})
+  response.redirect('/');
+});
 
 application.listen(3000);
