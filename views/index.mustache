@@ -15,14 +15,15 @@
         <div class='todo-list'>
              <ul>
                 {{#todos}}
-                <li>{{.}} <button type="submit">Mark Complete</button></li>
+                <li>{{task}} <button type="submit" class="mark-complete">Mark Complete</button></li>
                 {{/todos}}
             </ul>
         </div>
         <div class='completed-tasks'>
             <h2>Completed Tasks</h2>
-             <ul>
-                <li></li>
+             <ul class="completed">
+                 {{^todos}}
+                 {{/todos}}
             </ul>
         </div>
       <script type="text/javascript" src='../public/main.js'>
